@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Clock</title>
+</head>
+<style> 
+    body{
+    background-color: black;
+    }
+   
+    .clockclass,p{
+        color: lime;
+        position: absolute;
+        top: 50%;
+        left: 40%;
+        font-size: 60px;
+        font-family: orbitron;
+
+    }
+    .clockclass1{
+        color: mediumseagreen;
+        position: absolute;
+        top: 70%;
+        left: 40%;
+        font-size: 50px;
+        font-family: Arial, Helvetica, sans-serif;
+
+    }
+
+</style>
+<body>
+    <div id="clock" class="clockclass">
+        
+    </div>
+    <p style="color:pink;">Hi Neha </p>
+    <div  class="clockclass1"><marquee id="greeting">
+
+    </marquee>
+
+    </div>
+    <script>
+        function showtime(){
+            var d = new Date();
+             var h =  d.getHours();
+             var m = d.getMinutes();
+             var s = d.getSeconds();
+
+             var session = "PM";
+             if(h==0){
+                h = 12;
+             }
+
+             if(h > 12){
+                h = h-12;
+                sesssion = "AM";
+             }
+
+             h = h < 10? "0"+h:h;
+
+
+            m = m < 10? "0"+m:m;
+            s = s<10? "0"+s:s;
+            let greet = "";
+            if(h > 0 && h < 12 && session == "AM"){
+                greet = "GOOD MORNING";
+            }
+            if(h > 0 && h < 4 && session == "PM"){
+                greet = "GOOD AFTERNOON";
+            }
+            if(h >= 4 && h < 9 && session == "PM"){
+                greet = "GOOD EVENING";
+            }
+            if(h >= 9 && h <= 12 && session == "PM"){
+                greet = "GOOD NIGHT";
+            }
+             document.getElementById("clock").innerHTML = h + ":" + m + ":" + s + " " + session;
+             document.getElementById("greeting").innerHTML = greet;
+             setTimeout(showtime,1000);
+
+
+        }
+        showtime();
+    </script>
+    
+</body>
+</html>
